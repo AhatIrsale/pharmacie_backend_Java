@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Ville;
 import com.example.demo.entities.Zone;
+import com.example.demo.entities.ZoneDTO;
 import com.example.demo.repository.VilleRepository;
 import com.example.demo.repository.ZoneRepository;
 import com.example.demo.services.ZoneService;
@@ -39,10 +41,28 @@ public class ZoneController {
 
 	
 
-	@GetMapping("/Zones")
+	@GetMapping("/zones1")
 	public List<Zone> findAll(){
 		return zs.findAll();
 	}
+	//return id nom pharmaciedetails , mais return pas la ville
+	
+	@GetMapping("/zones")
+	public List<ZoneDTO> getAllZones() {
+	    List<Zone> zones = zoneRepository.findAll();
+	    List<ZoneDTO> dtos = new ArrayList<>();
+	    for (Zone zone : zones) {
+	        ZoneDTO dto = new ZoneDTO();
+	        dto.setId(zone.getId());
+	        dto.setNom(zone.getNom());
+	        dto.setVille(zone.getVille().getNom());
+	        dtos.add(dto);
+	    }
+	    return dtos;
+	}
+	
+	
+	//return id_zone nom_zone nom_zone_ville .
 	
 	@PostMapping("/Zones/add")
 	public Zone createZone(@RequestBody Zone zone) {
@@ -60,6 +80,7 @@ public class ZoneController {
 	        Zone existingZone = zs.findById(id);
 	        if (existingZone != null) {
 	        	existingZone.setNom(zone.getNom());
+	        	existingZone.setVille(zone.getVille());
 	            return zs.save(existingZone);
 	        }
 	        return null;

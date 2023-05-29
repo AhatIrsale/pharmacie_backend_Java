@@ -3,27 +3,26 @@ package com.example.demo.entities;
 import java.util.List;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 
 @Entity
+
 public class Ville {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
+	int id;
 	String nom;
 	@OneToMany(mappedBy = "ville", fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private List<Zone> zones;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -47,7 +46,7 @@ public class Ville {
 		super();
 	}
 
-	public Ville(Long id, String nom, List<Zone> zones) {
+	public Ville(int id, String nom, List<Zone> zones) {
 		super();
 		this.id = id;
 		this.nom = nom;

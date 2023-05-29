@@ -23,7 +23,7 @@ public interface PharmacieRepository  extends JpaRepository<Pharmacie,Long> {
 	List<Pharmacie> f( );
 			
 	
-	@Query( value = "Select p.id, p.nom , p.laltitude, p.longitude ,p.photo ,p.user_id,p.zone_id from pharmacie p , garde g ,pharmacie_garde pg , zone z  where p.id = pg.pharmacie and g.id=pg.garde and z.id=p.zone_id and z.nom= :zone and g.type= :periode",nativeQuery=true)
+	@Query( value = "Select p.id, p.nom , p.laltitude, p.longitude ,p.photo ,p.user_id,p.zone_id, p.fav from pharmacie p , garde g ,pharmacie_garde pg , zone z  where p.id = pg.pharmacie and g.id=pg.garde and z.id=p.zone_id and z.nom= :zone and g.type= :periode",nativeQuery=true)
 	//@Query("SELECT  p FROM Pharmacie p , Garde g ,PharmacieGarde pg , Zone z  where p.id = pg.pharmacie and g.id=pg.garde and z.id=p.zone and z.nom= :zone and g.Type= :periode")
 	List<Pharmacie> FindPharmacieByZonePeriode( @Param("zone") String zone ,@Param("periode") String periode);
 			

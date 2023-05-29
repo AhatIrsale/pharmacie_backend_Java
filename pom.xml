@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.4</version>
+		<version>2.7.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -14,19 +14,24 @@
 	<name>pharmacietest2</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
-	<dependency>
-     <groupId>org.springdoc</groupId>
-     <artifactId>springdoc-openapi-ui</artifactId>
-     <version>1.6.3</version>
-</dependency>
-
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-validation</artifactId>
-</dependency>
+	
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    </dependency>
+		<dependency>
+		     <groupId>org.springdoc</groupId>
+		     <artifactId>springdoc-openapi-ui</artifactId>
+		     <version>1.6.3</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
 	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,6 +62,36 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--spring security dependency-->
+		<!-- My code json web token  spring security dependency-->
+	 <dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		<!-- ... other dependency elements ... -->
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.18.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<!--end of spring security dependency-->
+		
+		
 	</dependencies>
 
 	<build>

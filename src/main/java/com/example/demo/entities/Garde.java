@@ -2,10 +2,8 @@ package com.example.demo.entities;
 
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.*;
+
 
 @Entity
 public class Garde {
@@ -32,6 +30,10 @@ public class Garde {
 
 	public Garde() {
 		super();
+	}
+
+	public Garde(Long gardeId) {
+		// TODO Auto-generated constructor stub
 	}
 
 	

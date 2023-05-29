@@ -1,48 +1,36 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.*;
 
 
 @Embeddable
 public class PharmacieGardePK implements Serializable {
 
 	
-	private long pharmacie;
-	private long garde;
-	private Date dateDebut;
+	private int garde_id;
+	private int pharmacie_id;
 
-	public long getPharmacie() {
-		return pharmacie;
+	public int getGarde_id() {
+		return garde_id;
 	}
 
-	public void setPharmacie(long pharmacie) {
-		this.pharmacie = pharmacie;
+	public void setGarde_id(int garde_id) {
+		this.garde_id = garde_id;
 	}
 
-	public long getGarde() {
-		return garde;
+	public int getPharmacie_id() {
+		return pharmacie_id;
 	}
 
-	public void setGarde(long garde) {
-		this.garde = garde;
-	}
-
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
-
-	public PharmacieGardePK() {
-		super();
+	public void setPharmacie_id(int pharmacie_id) {
+		this.pharmacie_id = pharmacie_id;
 	}
 	
 

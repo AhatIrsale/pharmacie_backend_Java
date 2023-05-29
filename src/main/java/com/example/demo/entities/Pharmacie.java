@@ -2,37 +2,36 @@ package com.example.demo.entities;
 
 
 
+
 import java.util.List;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 
 public class Pharmacie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	private String nom;
 	private double laltitude;
 	private double longitude;
 	private String photo;
+	private boolean fav;
 	
+	public boolean isFav() {
+		return fav;
+	}
+
+	public void setFav(boolean fav) {
+		this.fav = fav;
+	}
+
 	@ManyToOne
-	@JsonIgnore
-	private Utilisateur user;
-	
-	@ManyToOne
-	@JsonIgnore
+	@JsonBackReference
 	private Zone zone;
 
 	public Zone getZone() {
@@ -43,11 +42,11 @@ public class Pharmacie {
 		this.zone = zone;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -83,27 +82,29 @@ public class Pharmacie {
 		this.photo = photo;
 	}
 
-	public Utilisateur getUser() {
-		return user;
-	}
-
-	public void setUser(Utilisateur user) {
-		this.user = user;
-	}
+	
 
 	public Pharmacie() {
 		super();
 	}
 
-	public Pharmacie( String nom, double laltitude, double longitude, String photo, Utilisateur user, Zone zone) {
+	public Pharmacie( String nom, double laltitude, double longitude, String photo,  Zone zone,boolean f) {
 		super();
 		this.nom = nom;
 		this.laltitude = laltitude;
 		this.longitude = longitude;
 		this.photo = photo;
-		this.user = user;
 		this.zone = zone;
+		this.fav = f;
 	}
+
+	@Override
+	public String toString() {
+		return "Pharmacie [id=" + id + ", nom=" + nom + ", laltitude=" + laltitude + ", longitude=" + longitude
+				+ ", photo=" + photo + ", zone=" + zone +  ", favorie=" + fav + "]";
+	}
+	
+	
 	
 	
 
